@@ -2,7 +2,7 @@
   <div class="marker-item" :class="{'marker-hidden': !marker.visible}">
     <div class="marker-button" :title="marker.id" @click="click(false)">
       <div class="icon" v-if="marker.type === 'player'">
-        <img :src="'assets/playerheads/' + marker.playerUuid + '.png'" alt="playerhead" @error="steve">
+        <img :src="'maps/' + mapId +  '/live/assets/playerheads/' + marker.playerUuid + '.png'" alt="playerhead" @error="steve">
       </div>
       <div class="info">
         <div class="label">{{markerLabel}}</div>
@@ -40,6 +40,7 @@ export default {
     return {
       appState: this.$bluemap.appState,
       controls: this.$bluemap.mapViewer.controlsManager.data,
+      mapId: this.$bluemap.mapViewer.data.map.id
     }
   },
   computed: {
@@ -127,7 +128,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      background-color: var(--theme-bg-light);
+      background-color: var(--theme-bg-hover);
     }
 
     > .info {
@@ -158,7 +159,7 @@ export default {
           &:not(:first-child) {
             margin-left: 0.5em;
             padding-left: 0.5em;
-            border-left: solid 1px var(--theme-bg-light);
+            border-left: solid 1px var(--theme-bg-hover);
           }
         }
       }
